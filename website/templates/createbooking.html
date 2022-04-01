@@ -1,0 +1,88 @@
+{% extends "base.html" %} {% block title %}Create booking{% endblock %} {% block
+content %}
+<form method="POST">
+  <h1 align="center">Book a room</h1>
+  <div class="form-group row">
+    <label for="roomNumber" class="col-sm-2 col-form-label">Room Number</label>
+    <div class="col-sm-10">
+      <select name="drop_roomNumber" class="form-select btn-primary" aria-label="Disabled select example">
+        <option selected>Please choose a room number</option>
+        {% for room in room %}
+        <option id="roomselect" value={{room.roomNumber}}>{{room.roomNumber}}</option>
+       {% endfor %}
+      </select>
+    </div>
+  </div>
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">Date</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            class="date"
+            type="date"
+            name="date"
+            id="date"
+            value="option1"
+            checked
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">start Time</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            class="time"
+            type="time"
+            name="startTime"
+            id="startTime"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <div class="row">
+      <legend class="col-form-label col-sm-2 pt-0">End Time</legend>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            class="time"
+            type="time"
+            name="endTime"
+            id="endTime"
+          />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <p> bookings</p>
+  <ul class="list-group list-group-flush" id="notes">
+    {% for book in booking %}
+    <li class="list-group-item">
+      {{ booking.id }}
+      {{ booking.bookerId }}
+      {{ booking.roomId }}
+      {{ booking.date }}
+
+      </button>
+    </li>
+    {% endfor %}
+  </ul>
+  
+    <div align="center">
+      <button type="submit" class="btn btn-primary">Add Booking</button>
+    </div>
+
+
+</form>
+{% endblock %}
+
+
